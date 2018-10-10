@@ -9,7 +9,9 @@ function getCheckoutId(obj) {
 		'authentication.entityId' : '8a8294174d0595bb014d05d829cb01cd',
 		'amount' : obj.amount,
 		'currency' : 'EUR',
-		'paymentType' : 'DB'
+		'paymentType' : 'DB',
+		merchantTransactionId: obj.merchantTransactionId,
+		merchantInvoiceId: obj.merchantInvoiceId,
 	});
 	var options = {
 		port: 443,
@@ -66,6 +68,8 @@ app.get('/', function (req, res) {
 	// Get checkoutId before render the form
 	getCheckoutId({
 		amount: '92.00',
+		merchantTransactionId: 123,
+		merchantInvoiceId: 345,
 		cb: (result) => {
 			// Render the form with checkoutId
 			res.render('index.ejs', {
@@ -77,10 +81,14 @@ app.get('/', function (req, res) {
 
 // Callback endpoint after form was processed
 app.get('/success', function (req, res) {
+	console.log(req.query);
+	console.log(req.body);
 	// Check checkout status
 	getStatus(req.query.resourcePath, (response) => {
 		console.log(response);
 		// Check that result code match pattern from https://gate2play.docs.oppwa.com/reference/resultCodes
+		console.log('response.merchantTransactionId', response.merchantTransactionId)
+		console.log('response.merchantInvoiceId', response.merchantInvoiceId)
 		if (response.result.code && /^(000\.000\.|000\.100\.1|000\.[36])/.test(response.result.code)) {
 			// Create Payment instance here
 			res.send('success!');
