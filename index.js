@@ -4,11 +4,11 @@ var querystring = require('querystring');
 function getCheckoutId(obj) {
 	var path='/v1/checkouts';
 	var data = querystring.stringify( {
-		'authentication.userId' : '8a8294174d0595bb014d05d829e701d1',
-		'authentication.password' : '9TnJPc2n9h',
-		'authentication.entityId' : '8a8294174d0595bb014d05d829cb01cd',
+		'authentication.userId' : '8a82941866529a2e016652ac34070027',
+		'authentication.password' : 'BPJr2xBKaN',
+		'authentication.entityId' : '8a82941866529a2e016652acc495002b',
 		'amount' : obj.amount,
-		'currency' : 'EUR',
+		'currency' : 'SAR',
 		'paymentType' : 'DB',
 		merchantTransactionId: obj.merchantTransactionId,
 		merchantInvoiceId: obj.merchantInvoiceId,
@@ -36,9 +36,9 @@ function getCheckoutId(obj) {
 
 function getStatus(resourcePath, callback) {
 	var path=resourcePath;
-	path += '?authentication.userId=8a8294174d0595bb014d05d829e701d1'
-	path += '&authentication.password=9TnJPc2n9h'
-	path += '&authentication.entityId=8a8294174d0595bb014d05d829cb01cd'
+	path += '?authentication.userId=8a82941866529a2e016652ac34070027'
+	path += '&authentication.password=BPJr2xBKaN'
+	path += '&authentication.entityId=8a82941866529a2e016652acc495002b'
 	var options = {
 		port: 443,
 		host: 'test.oppwa.com',
