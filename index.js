@@ -12,6 +12,15 @@ function getCheckoutId(obj) {
 		'paymentType' : 'DB',
 		merchantTransactionId: obj.merchantTransactionId,
 		merchantInvoiceId: obj.merchantInvoiceId,
+		testMode: 'EXTERNAL',
+		'customer.email': 'name',
+		'billing.street1': 'street',
+		'billing.city': 'city',
+		'billing.state': 'city',
+		'billing.postcode': '123',
+		'customer.givenName': 'name',
+		'customer.surname': 'name',
+		'billing.country': 'SA',
 	});
 	var options = {
 		port: 443,
