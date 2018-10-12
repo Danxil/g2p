@@ -11,9 +11,8 @@ function getCheckoutId(obj) {
 		'currency' : 'SAR',
 		'paymentType' : 'DB',
 		merchantTransactionId: obj.merchantTransactionId,
-		merchantInvoiceId: obj.merchantInvoiceId,
 		testMode: 'EXTERNAL',
-		'customer.email': 'name',
+		'customer.email': 'email@email.email',
 		'billing.street1': 'street',
 		'billing.city': 'city',
 		'billing.state': 'city',
@@ -76,7 +75,7 @@ app.use(bodyParser.json({ extended: true }));
 app.get('/', function (req, res) {
 	// Get checkoutId before render the form
 	getCheckoutId({
-		amount: '92.00',
+		amount: '10.00',
 		merchantTransactionId: 123,
 		merchantInvoiceId: 345,
 		cb: (result) => {
